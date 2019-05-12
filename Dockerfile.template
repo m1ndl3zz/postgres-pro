@@ -1,9 +1,9 @@
 # vim:set ft=dockerfile:
 FROM debian:stretch
 
-# make the "en_US.UTF-8" locale so postgres will be utf-8 enabled by default
+# make the "ru_RU.UTF-8" locale so postgres will be utf-8 enabled by default
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
-        && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+        && localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8
 
 # Env section
 ENV PG_REPO_KEY %%PG_REPO_KEY%%
@@ -13,7 +13,7 @@ ENV PG_MINOR %%PG_MINOR%%
 ENV PG_RELEASE $PG_MAJOR.$PG_MINOR
 ENV PG_VERSION $PG_RELEASE-1.stretch.pro
 ENV GOSU_VERSION 1.10
-ENV LANG en_US.utf8
+ENV LANG ru_RU.utf8
 
 # explicitly set user/group IDs
 RUN groupadd -r postgres --gid=999 && useradd -r -g postgres --uid=999 postgres
